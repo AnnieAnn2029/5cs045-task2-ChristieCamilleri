@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <h2>Register</h2>
+
+    {% if success %}
+        <p>Account created! You can now log in.</p>
+    {% else %}
+        {% if errors %}
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post">
+            <label>Username
+                <input type="text" name="username" value="{{ username }}" required>
+            </label>
+            <label>Email
+                <input type="email" name="email" value="{{ email }}" required>
+            </label>
+            <label>Password
+                <input type="password" name="password" required>
+            </label>
+            <label>Confirm password
+                <input type="password" name="confirm_password" required>
+            </label>
+            <button type="submit">Register</button>
+        </form>
+    {% endif %}
+{% endblock %}
