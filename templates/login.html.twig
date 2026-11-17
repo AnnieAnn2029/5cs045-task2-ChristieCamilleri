@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{# Fill in the page title #}
+{% block title %}Log in{% endblock %}
+
+{# Fill in the main part of the page #}
+{% block content %}
+    <h2>Log in</h2>
+
+    {# If the login worked, show a message instead of the form #}
+    {% if success %}
+        <p>You are now logged in.</p>
+    {% else %}
+        {# Show any error messages, one per line #}
+        {% if errors %}
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post">
+            <label>Username
+                <input type="text" name="username" value="{{ username }}" required>
+            </label>
+            <label>Password
+                <input type="password" name="password" required>
+            </label>
+            <button type="submit">Log in</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anime{% endblock %}
+
+{% block content %}
+    <h2>All anime</h2>
+
+    {% if animeList %}
+        <ul>
+            {% for anime in animeList %}
+                <li>
+                    {{ anime.title }}
+                    ({{ anime.release_year }}, {{ anime.genre }}, {{ anime.status }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No anime have been added yet.</p>
+    {% endif %}
+{% endblock %}
