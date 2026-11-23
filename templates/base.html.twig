@@ -6,6 +6,18 @@
 </head>
 <body>
     <h1>Anime Tracker</h1>
+    <nav>
+        <a href="anime.php">Anime</a>
+        {# Shows different links depending on whether someone is logged in #}
+        {% if session.user_id is defined %}
+            | Logged in as {{ session.username }}
+            | <a href="logout.php">Log out</a>
+        {% else %}
+            | <a href="login.php">Log in</a>
+            | <a href="register.php">Register</a>
+        {% endif %}
+    </nav>
+    <hr>
     {% block content %}{% endblock %}
 </body>
 </html>
