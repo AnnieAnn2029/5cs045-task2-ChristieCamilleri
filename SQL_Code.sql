@@ -46,3 +46,10 @@ CREATE TABLE IF NOT EXISTS watchlist (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (anime_id) REFERENCES anime(id) ON DELETE CASCADE
 );
+
+-- this was done so that we use an API called Jikan, this will use data from the website MyAnimeList
+ALTER TABLE anime ADD COLUMN mal_id INT DEFAULT NULL AFTER id;
+
+UPDATE anime SET mal_id = 5114 WHERE title LIKE 'Fullmetal Alchemist%';
+UPDATE anime SET mal_id = 21 WHERE title = 'One Piece';
+UPDATE anime SET mal_id = 52991 WHERE title LIKE 'Frieren%';
